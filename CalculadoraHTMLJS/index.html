@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora JavaScript</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Operações Básicas</h1>
+    </header>
+    <section>
+        Calculadora:
+        <p></p>
+        <div id="res">
+            <textarea name="rescalc" id="rescalc" cols="29" rows="2" placeholder="Digite um Número:"></textarea>
+        </div>
+        <div id="btn">
+            <table id="tb1">
+                <tr>
+                    <td><input type="button" value="/" id="div" onclick="diginum(10)"></td>
+                    <td><input type="button" value="*" id="mult" onclick="diginum(11)"></td>
+                    <td><input type="button" value="-" id="menos" onclick="diginum(12)"></td>
+                    <td><input type="button" value="+" id="mais" onclick="diginum(13)"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="7" id="sete" onclick="diginum(7)"></td>
+                    <td><input type="button" value="8" id="oito" onclick="diginum(8)"></td>
+                    <td><input type="button" value="9" id="nove" onclick="diginum(9)"></td>
+                    <td><input type="button" value="." id="ponto" onclick="diginum(14)"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="4" id="quatro" onclick="diginum(4)"></td>
+                    <td><input type="button" value="5" id="cinco" onclick="diginum(5)"></td>
+                    <td><input type="button" value="6" id="seis" onclick="diginum(6)"></td>
+                    <td><input type="button" value="C" id="clear" onclick="diginum(15)"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="1" id="um" onclick="diginum(1)"></td>
+                    <td><input type="button" value="2" id="dois" onclick="diginum(2)"></td>
+                    <td><input type="button" value="3" id="tres" onclick="diginum(3)"></td>
+                </tr>
+            </table>
+            <table id="tb2">
+                <tr>
+                    <td><input type="button" value="0" id="zero" onclick="diginum(0)"></td>
+                    <td><input type="button" value="," id="virg" onclick="diginum(16)"></td>
+                    <td><input type="button" value="=" id="igual" onclick="diginum(17)"></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; CodeGuiFs</p>
+    </footer> 
+    <script src="script.js"></script>  
+</body>
+</html>
