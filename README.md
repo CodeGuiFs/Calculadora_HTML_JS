@@ -19,3 +19,10 @@ Novas implementações podem ser desnecessárias e serão utilizadas apenas como
 - [ ] Tratar erros de entrada como vírgula ( , ) e ponto ( . ) 
 - [ ] Incluir mais operações (pot) (sqr) 
 - [ ] Alterar interface
+
+# Github Pages
+---
+
+### O projeto foi publicado no Github Pages
+
+* https://codeguifs.github.io/Calculadora_HTML_JS/
