@@ -15,8 +15,8 @@ Novas implementações podem ser desnecessárias e serão utilizadas apenas como
 ---
 # Updates
 
-- [ ] Obter dados através do teclado
-- [ ] Tratar erros de entrada como vírgula ( , ) e ponto ( . ) 
+- [x] Obter dados através do teclado
+- [x] Tratar erros de entrada como vírgula ( , ) e ponto ( . ) 
 - [ ] Incluir mais operações (pot) (sqr) 
 - [ ] Alterar interface
 
