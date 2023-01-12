@@ -1,126 +1,86 @@
-var visorCalc = document.querySelector("textarea");
-var btn = document.querySelectorAll("input[type=button]");
-
-visorCalc.addEventListener("click", function(){
+$("input[type=button]").click(function(){
     this.blur();
+    return diginum(this.value);
 });
 
-for (var c = 0; c < btn.length; c++) {
-    btn[c].addEventListener("click", function () {
-        this.blur();
-        return diginum(this.value);
-    });
-}
-
-document.addEventListener("keydown", function(event){
-    return diginum(event.key)
+$(document).keydown(function(event){
+    return diginum(event.key);
 });
 
 
 function diginum(num) {
-    switch (num) {
-        case "0":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "1":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "2":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "3":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "4":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "5":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "6":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "7":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "8":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "9":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "/":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "*":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "-":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case "+":
-            visorCalc.insertAdjacentHTML("beforeend", num);
-            break;
-        case ".":
-            visorCalc.insertAdjacentHTML("beforeend", ".");
-            break;
-        case ",":
-            visorCalc.insertAdjacentHTML("beforeend", ".");
-            break;
-        case "Enter":
-            visorCalc.insertAdjacentHTML("beforeend", "=");
-            calcular()
-            break;
-        case "=":
-            visorCalc.insertAdjacentHTML("beforeend", "=");
-            calcular()
-            break;
-        case "C":
-            visorCalc.innerHTML = ``;
-            break
-        case "Delete":
-            visorCalc.innerHTML = ``;
-            break;
+    var n = Number(num);
+    if(n == num){
+        $("textarea").append(num);
+    }else{
+        switch (num) {
+            case "/":                                       //Switch used for Symbols.
+            case "*":
+            case "-":
+            case "+":
+            case ".":
+                $("textarea").append(num);
+                break;
+
+            case ",":                                       //Switch used for comma treatment.
+                $("textarea").append(".");
+                break;
+
+            case "Enter":                                   //Switch used for equal.
+            case "=":
+                $("textarea").append("=");
+                calcular();
+                break;
+
+            case "C":                                       //Switch used for clear the input.
+            case "Delete":
+                $("textarea").html("");
+                break;
+            case "Backspace":
+                $("textarea").html($("textarea").val().substr(0, $("textarea").val().length-1))
+                break;
+        }    
     }
 }
 
 
 
 function calcular() {
-    var textCalc = document.querySelector("textarea").value; //Recebe a String digitada na calculadora.
-    var valor1 = ""                                          //Armazena o primeiro valor. 
-    var valor2 = ""                                          //Armazena o segundo valor.
-    var conjuntoCaracter = ""                                //Armazena os caracteres individuais da String.
-    var sinalOperacao = ""                                   //Armazena o caracter de operação. 
+    var textCalc = $("textarea").val();                     //Receive a String from imput.
+    var value1 = ""                                         //Store the firs value. 
+    var value2 = ""                                         //Store the second value.
+    var charSet = ""                                        //Temporary store the individual values from the string.
+    var operator = ""                                       //Store the operator sign. 
 
-    for (var i = 0; i < textCalc.length; i++) {
+
+    for (var i = 0; i < textCalc.length; i++) {             // Do a slice on the string, verifying all the characters one by one. 
         var c = textCalc[i]
         if (c == "+" || c == "-" || c == "*" || c == "/") {
-            valor1 = conjuntoCaracter;
-            sinalOperacao = c;
-            conjuntoCaracter = "";
+            value1 = charSet;
+            operator = c;
+            charSet = "";
         } else if (c == "=") {
-            valor2 = conjuntoCaracter;
+            value2 = charSet;
             break;
         } else {
-            conjuntoCaracter += c;
+            charSet += c;
         }
     }
 
-    var nvalor1 = Number(valor1);
-    var nvalor2 = Number(valor2);
-    var resultado = 0;
+    var nvalue1 = Number(value1);                           //Transform the string into a Number.
+    var nvalue2 = Number(value2);                           //Transform the string into a Number.
+    var result = 0;
     
-        if (sinalOperacao == "+") {
-            resultado = nvalor1 + nvalor2;
-        } else if (sinalOperacao == "-") {
-            resultado = nvalor1 - nvalor2;
-        } else if (sinalOperacao == "*") {
-            resultado = nvalor1 * nvalor2;
-        } else if (sinalOperacao == "/") {
-            resultado = nvalor1 / nvalor2;
+        if (operator == "+") {
+            result = nvalue1 + nvalue2;
+        } else if (operator == "-") {
+            result = nvalue1 - nvalue2;
+        } else if (operator == "*") {
+            result = nvalue1 * nvalue2;
+        } else if (operator == "/") {
+            result = nvalue1 / nvalue2;
         }
     
     
-    visorCalc.innerHTML = `${resultado}`;
+        $("textarea").html(`${result}`);                    //Output the result.
 }
